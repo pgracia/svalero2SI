@@ -20,19 +20,26 @@ DECLARE
     v_dato dniPersonal%ROWTYPE;
 	
     v_validacion CHAR(100);
-    e_dni_invalido EXCEPTION;
 	v_check_tabla int := 0;
 	v_inserta_error CHAR(2);
 	v_query_centro varchar2(500);
 	v_query_centro_resultado varchar2(100);
+	
+	e_dni_invalido EXCEPTION;
+	e_tabla_existe EXCEPTION;
+	pragma exception_init( e_tabla_existe, -955 );
 BEGIN
     OPEN dniPersonal(10);
     FETCH dniPersonal into v_dato;
 	
 	SELECT COUNT(*) INTO v_check_tabla FROM user_tables WHERE table_name = 'ERRORES';
-	IF v_check_tabla <= 0 THEN		
-		EXECUTE IMMEDIATE 'create table errores (descripcion varchar2(500) not null, fecha date not null)';
-		DBMS_OUTPUT.PUT_LINE('Tabla de errores creada');
+	IF v_check_tabla <= 0 THEN	
+		BEGIN	
+			EXECUTE IMMEDIATE 'create table errores (descripcion varchar2(500) not null, fecha date not null)';
+			DBMS_OUTPUT.PUT_LINE('Tabla de errores creada');
+		EXCEPTION
+			WHEN e_tabla_existe then NULL;
+		END;
 	END IF;
 	
     WHILE (dniPersonal%FOUND) LOOP
@@ -47,7 +54,7 @@ BEGIN
 				v_query_centro := 'select nombre from centros where COD_CENTRO = 10';
 				EXECUTE IMMEDIATE v_query_centro into v_query_centro_resultado;
 				error.textoError := 'Error en DNI --> ' || v_validacion || ' para el centro ' || v_query_centro_resultado;
-				INSERT INTO errores (descripcion, fecha) VALUES ('Error en DNI --> ' || v_validacion || ' para el centro ' || v_query_centro_resultado, SYSDATE);			
+				EXECUTE IMMEDIATE 'INSERT INTO errores (descripcion, fecha) VALUES (''' || error.textoError || ''', SYSDATE)';			
         END;
         FETCH dniPersonal into v_dato;
     END LOOP;
