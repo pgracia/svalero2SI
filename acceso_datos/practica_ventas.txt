@@ -1,0 +1,4 @@
+* Un cliente tiene cuentas
+* Una cuenta puede estar a nombre de varios clientes
+* Una venta se realiza sobre pedido
+* El cliente tiene que tener saldo en su cuenta para poder gestionar el pedido
