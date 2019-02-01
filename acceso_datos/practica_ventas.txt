@@ -1,4 +1,10 @@
-* Un cliente tiene cuentas
+* Un cliente (puede ser una tienda) tiene cuentas
 * Una cuenta puede estar a nombre de varios clientes
-* Una venta se realiza sobre pedido
 * El cliente tiene que tener saldo en su cuenta para poder gestionar el pedido
+* Una venta se realiza sobre pedido
+* Una venta supone una disminución del stock
+* Los productos están asignados a uno o varios fabricantes
+* Los productos tienen existencias en un almacen
+* Si no hay existencias en el almacen, se deriva a una tienda con existencias
+* En caso de no haber existencias en el almacen, se genera un pedido a los fabricantes (10 unidades a cada uno)
+* Las tiendas tienen productos asignados
