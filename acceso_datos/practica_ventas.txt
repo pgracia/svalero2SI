@@ -1,3 +1,5 @@
+REQUERIMIENTOS
+--------------
 * Un cliente (puede ser una tienda) tiene cuentas. En caso de ser tienda, se aplica un 30% descuento
 * Una cuenta puede estar a nombre de varios clientes
 * Una cuenta bancaria esta asignada a una sucursal determinada de un banco
@@ -11,3 +13,10 @@
 * Las tiendas tienen artículos asignados con su número de existencias
 * Hay artículos en promoción con un 10%-20% de descuento
 * Hay tiendas (franquicias) que pertenecen a otra tienda (tienda matriz). En caso de hacer un pedido a la matriz, se extiende a todas las tiendas que tiene asignadas, dividiendo el número de artículos proporcionalmente a cada franquicia
+
+FUNCIONALIDADES
+---------------
+* Objetos para introducir valores en todas las entidades generadas
+* Procedimientos de CRUD para todas las entidades
+* Funciones que permitan calcular descuentos, verificar saldos de cliente, existencias de articulos....
+* Procedimientos que permitan realizar un pedido y ver el resultado del mismo (incluye importes y tienda(s) que realizarán el envío o excepciones en caso de error: cliente sin saldo, sin existencias....)
