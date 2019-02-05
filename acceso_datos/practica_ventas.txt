@@ -1,10 +1,13 @@
-* Un cliente (puede ser una tienda) tiene cuentas
+* Un cliente (puede ser una tienda) tiene cuentas. En caso de ser tienda, se aplica un 30% descuento
 * Una cuenta puede estar a nombre de varios clientes
+* Una cuenta bancaria esta asignada a una sucursal determinada de un banco
 * El cliente tiene que tener saldo en su cuenta para poder gestionar el pedido
 * Una venta se realiza sobre pedido
-* Una venta supone una disminución del stock
+* Una venta supone una disminución del stock del articulo
 * Los articulos están asignados a uno o varios fabricantes
 * Los articulos tienen existencias en un almacen
-* Si no hay existencias en el almacen, se deriva a una tienda con existencias
+* Si no hay existencias en el almacen, se deriva a una tienda con existencias (en caso de que el pedido NO sea de una tienda)
 * En caso de no haber existencias en el almacen, se genera un pedido a los fabricantes (10 unidades a cada uno)
 * Las tiendas tienen artículos asignados con su número de existencias
+* Hay artículos en promoción con un 10%-20% de descuento
+* Hay tiendas (franquicias) que pertenecen a otra tienda (tienda matriz). En caso de hacer un pedido a la matriz, se extiende a todas las tiendas que tiene asignadas, dividiendo el número de artículos proporcionalmente a cada franquicia
