@@ -78,3 +78,4 @@ BEGIN
     libro := libros_typ('OTRO LIBRO', 'APELLIDO, NOMBRE', 'EDITALIBROS',1);
     libro.display;
 END;
+
